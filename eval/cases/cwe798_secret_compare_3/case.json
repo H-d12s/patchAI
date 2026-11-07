@@ -1,0 +1,18 @@
+{
+  "id": "cwe798_secret_compare_3",
+  "cwe": "CWE-798",
+  "family": "secret_compare",
+  "source": "generated",
+  "split": "test",
+  "project": "eval/cases/cwe798_secret_compare_3/project",
+  "file": "helpers_mod.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "def check_api_key(api_token):\n    \"\"\"True if the request carries the right credential.\"\"\"\n    expected = os.environ.get(\"API_TOKEN\", \"\")\n    return bool(expected) and hmac.compare_digest(api_token, expected)\n",
+    "imports_to_add": [
+      "import os"
+    ],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}

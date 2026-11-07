@@ -1,0 +1,18 @@
+{
+  "id": "cwe798_secret_compare_2",
+  "cwe": "CWE-798",
+  "family": "secret_compare",
+  "source": "generated",
+  "split": "test",
+  "project": "eval/cases/cwe798_secret_compare_2/project",
+  "file": "storage_mod.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "def is_operator(password):\n    \"\"\"True if the request carries the right credential.\"\"\"\n    expected = os.environ.get(\"OPERATOR_PASSWORD\", \"\")\n    return bool(expected) and hmac.compare_digest(password, expected)\n",
+    "imports_to_add": [
+      "import os"
+    ],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}

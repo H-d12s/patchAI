@@ -1,0 +1,16 @@
+{
+  "id": "cwe798_secret_class_attribute_0",
+  "cwe": "CWE-798",
+  "family": "secret_class_attribute",
+  "source": "generated",
+  "split": "dev",
+  "project": "eval/cases/cwe798_secret_class_attribute_0/project",
+  "file": "service_mod.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "class MailConfig:\n    \"\"\"Settings for the mail integration.\"\"\"\n\n    BASE_URL = \"https://mail.example.com/api\"\n    TIMEOUT = 10\n    SMTP_PASSWORD = os.environ.get(\"SMTP_PASSWORD\", \"\")\n",
+    "imports_to_add": [],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}

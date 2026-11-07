@@ -1,0 +1,80 @@
+# PatchAI's own Semgrep rules, for the vulnerability types Bandit does not detect.
+# Both use taint tracking: they follow data from where an attacker controls it (a source)
+# to where it becomes dangerous (a sink), unless it passes through a sanitizer first.
+
+rules:
+  - id: path-traversal-open
+    mode: taint
+    languages: [python]
+    severity: WARNING
+    message: >-
+      A file path built by joining the function argument onto a folder is used without checking
+      that it stays inside that folder. An attacker can use '../' or an absolute path to reach other files.
+    metadata:
+      cwe: CWE-22
+    pattern-sources:
+      # The source is the moment the argument is joined onto a base folder.
+      - patterns:
+          - pattern-inside: |
+              def $FUNC(..., $NAME, ...):
+                ...
+          - pattern-either:
+              - pattern: os.path.join(..., $NAME, ...)
+              - pattern: $BASE / $NAME
+              - pattern: $BASE + $NAME
+              - pattern: f"...{$NAME}..."
+          - metavariable-regex:
+              metavariable: $NAME
+              regex: (?i).*(name|file|path|doc|report|invoice|page|key).*
+    pattern-sanitizers:
+      - pattern: os.path.basename(...)
+      - pattern: os.path.realpath(...)
+      - pattern: os.path.abspath(...)
+      - pattern: $P.resolve(...)
+      - pattern: werkzeug.utils.secure_filename(...)
+      - pattern: secure_filename(...)
+    pattern-sinks:
+      - pattern: open(...)
+      - pattern: flask.send_file(...)
+      - pattern: os.remove(...)
+      - pattern: os.unlink(...)
+      - pattern: shutil.copy(...)
+      - pattern: $P.read_text(...)
+      - pattern: $P.read_bytes(...)
+      - pattern: $P.write_text(...)
+
+  - id: flask-reflected-xss
+    mode: taint
+    languages: [python]
+    severity: WARNING
+    message: >-
+      User input from the request is put into an HTML response without escaping. An attacker
+      can inject a <script> tag that runs in other users' browsers.
+    metadata:
+      cwe: CWE-79
+    pattern-sources:
+      - pattern: flask.request.$ATTR.get(...)
+      - pattern: flask.request.$ATTR[...]
+    pattern-sanitizers:
+      - pattern: markupsafe.escape(...)
+      - pattern: html.escape(...)
+      - pattern: escape(...)
+    pattern-sinks:
+      - patterns:
+          - pattern-inside: |
+              return $RESULT
+          - pattern: $RESULT
+          - pattern-not: flask.render_template_string(...)  # handled by the next sink
+          - pattern-not: flask.render_template(...)  # templates escape automatically
+          - metavariable-regex:
+              metavariable: $RESULT
+              regex: (?s).*<[a-zA-Z/].*
+      - patterns:  # only the template text itself, not the safe keyword arguments
+          - pattern: flask.render_template_string($TEMPLATE, ...)
+          - focus-metavariable: $TEMPLATE
+      - patterns:
+          - pattern: flask.make_response($BODY, ...)
+          - focus-metavariable: $BODY
+          - metavariable-regex:
+              metavariable: $BODY
+              regex: (?s).*<[a-zA-Z/].*

@@ -1,0 +1,18 @@
+{
+  "id": "cwe327_crypto_signature_1",
+  "cwe": "CWE-327",
+  "family": "crypto_signature",
+  "source": "generated",
+  "split": "test",
+  "project": "eval/cases/cwe327_crypto_signature_1/project",
+  "file": "helpers_utils.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "def sign_request(body, key):\n    \"\"\"Signature sent with each request so the receiver can check it was not changed.\"\"\"\n    return hmac.new(key.encode(), body.encode(), hashlib.sha256).hexdigest()\n",
+    "imports_to_add": [
+      "import hmac"
+    ],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}

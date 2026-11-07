@@ -1,0 +1,43 @@
+# PatchAI settings. Paths are relative to this file.
+
+models:
+  # Our fine-tuned model. Until it is trained, PatchAI falls back to the first
+  # installed model in `fallbacks`.
+  default: patchai-3b
+  fallbacks: [qwen2.5-coder:3b, qwen2.5-coder:7b, qwen2.5-coder:1.5b]
+  # Models shown in the app and used by the evaluation.
+  compare: [qwen2.5-coder:3b, patchai-3b, qwen2.5-coder:7b]
+
+ollama_url: http://localhost:11434
+
+generation:
+  temperature: 0.1
+  context_window: 8192  # tokens the model can read at once
+  max_output_tokens: 1024
+
+repair:
+  max_attempts: 3
+
+rag:
+  embedder: fastembed  # fastembed (real embeddings) or hash (offline fallback, used in tests)
+  embedding_model: BAAI/bge-small-en-v1.5
+  reranker: Xenova/ms-marco-MiniLM-L-6-v2  # set to "" to turn the reranker off
+  candidates: 20  # how many results each search method returns before merging
+  top_k:  # how many chunks of each kind go into the prompt
+    guide: 2
+    code: 2
+    past_fix: 2
+  max_chunk_chars: 1500
+
+guard:
+  max_changed_lines: 30
+
+checks:
+  test_timeout_s: 120
+
+paths:
+  knowledge: data/knowledge
+  fix_examples: data/fix_examples/examples.jsonl
+  semgrep_rules: data/semgrep_rules.yaml
+  index: data/index
+  decisions: data/decisions.jsonl

@@ -1,0 +1,18 @@
+{
+  "id": "cwe78_command_concat_3",
+  "cwe": "CWE-78",
+  "family": "command_concat",
+  "source": "generated",
+  "split": "test",
+  "project": "eval/cases/cwe78_command_concat_3/project",
+  "file": "handlers_app.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "def rename_file(old_name, new_name):\n    \"\"\"Rename a file.\"\"\"\n    result = subprocess.run([\"mv\", old_name, new_name])\n    return result.returncode == 0\n",
+    "imports_to_add": [
+      "import subprocess"
+    ],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}

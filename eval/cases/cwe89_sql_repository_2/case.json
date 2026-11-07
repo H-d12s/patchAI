@@ -1,0 +1,16 @@
+{
+  "id": "cwe89_sql_repository_2",
+  "cwe": "CWE-89",
+  "family": "sql_repository",
+  "source": "generated",
+  "split": "test",
+  "project": "eval/cases/cwe89_sql_repository_2/project",
+  "file": "backend_lib.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "def by_label(self, label):\n    rows = self.conn.execute(\n        \"SELECT id, label FROM donors WHERE label = ? ORDER BY id\", (label,)\n    ).fetchall()\n    return [tuple(row) for row in rows]\n",
+    "imports_to_add": [],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}

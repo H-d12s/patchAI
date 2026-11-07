@@ -1,0 +1,16 @@
+{
+  "id": "cwe502_yaml_settings_1",
+  "cwe": "CWE-502",
+  "family": "yaml_settings",
+  "source": "generated",
+  "split": "test",
+  "project": "eval/cases/cwe502_yaml_settings_1/project",
+  "file": "records_api.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "def read_profile(document):\n    \"\"\"Settings from a user's YAML file, on top of the defaults.\"\"\"\n    settings = dict(DEFAULTS)\n    settings.update(yaml.safe_load(document) or {})\n    return settings\n",
+    "imports_to_add": [],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}

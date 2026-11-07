@@ -1,0 +1,7 @@
+INVOICE INV-1001
+Corner Shop
+-------------------------------
+2 x Green Tea           7.00
+1 x Coffee Beans        9.99
+-------------------------------
+Total                  16.99

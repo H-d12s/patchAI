@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "patchai"
+version = "0.1.0"
+description = "An AI that fixes security vulnerabilities in Python code, using a fine-tuned model and RAG."
+requires-python = ">=3.11"
+
+[project.scripts]
+patchai = "patchai.cli:app"
+
+[tool.setuptools]
+packages = ["patchai"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q -p no:cacheprovider"

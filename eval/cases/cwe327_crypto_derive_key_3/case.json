@@ -1,0 +1,16 @@
+{
+  "id": "cwe327_crypto_derive_key_3",
+  "cwe": "CWE-327",
+  "family": "crypto_derive_key",
+  "source": "generated",
+  "split": "test",
+  "project": "eval/cases/cwe327_crypto_derive_key_3/project",
+  "file": "service_utils.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "def make_encryption_key(password, salt):\n    \"\"\"Turn a password into an encryption key.\"\"\"\n    return hashlib.pbkdf2_hmac(\"sha256\", password.encode(), salt, 600_000)\n",
+    "imports_to_add": [],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}

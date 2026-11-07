@@ -1,0 +1,34 @@
+# PatchAI core requirements (the pipeline, RAG, review app, VS Code server, evaluation)
+# Install:  pip install -r requirements.txt
+# Training needs extra packages and a GPU: see requirements-train.txt
+
+# Data models and config
+pydantic>=2.6
+pyyaml>=6.0
+
+# Vulnerability scanners
+bandit>=1.7.9
+# semgrep is optional (adds path-traversal and XSS rules). Install with:  pip install semgrep
+
+# RAG: keyword search, vector math, embeddings + reranker (ONNX, no PyTorch needed)
+rank-bm25>=0.2.2
+numpy>=1.26
+fastembed>=0.4
+
+# Talking to local models
+ollama>=0.4
+
+# Interfaces
+streamlit>=1.35
+fastapi>=0.110
+uvicorn>=0.29
+typer>=0.12
+rich>=13.7
+
+# Evaluation charts
+pandas>=2.2
+matplotlib>=3.8
+
+# Running project tests (and the demo app's own tests)
+pytest>=8.0
+flask>=3.0

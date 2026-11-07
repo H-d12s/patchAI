@@ -1,0 +1,16 @@
+{
+  "id": "cwe798_secret_class_attribute_1",
+  "cwe": "CWE-798",
+  "family": "secret_class_attribute",
+  "source": "generated",
+  "split": "test",
+  "project": "eval/cases/cwe798_secret_class_attribute_1/project",
+  "file": "storage_lib.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "class CrmConfig:\n    \"\"\"Settings for the crm integration.\"\"\"\n\n    BASE_URL = \"https://crm.example.com/api\"\n    TIMEOUT = 10\n    CLIENT_SECRET = os.environ.get(\"CLIENT_SECRET\", \"\")\n",
+    "imports_to_add": [],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}

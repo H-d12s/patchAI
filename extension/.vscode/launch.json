@@ -1,0 +1,25 @@
+// Press F5 to compile the extension and open an Extension Development Host window with it loaded.
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run PatchAI Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
+      "outFiles": ["${workspaceFolder}/out/**/*.js"],
+      "preLaunchTask": "npm: compile"
+    },
+    {
+      "name": "Run PatchAI Extension on vuln_shop (demo)",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}",
+        "${workspaceFolder}/../demo_projects/vuln_shop"
+      ],
+      "outFiles": ["${workspaceFolder}/out/**/*.js"],
+      "preLaunchTask": "npm: compile"
+    }
+  ]
+}

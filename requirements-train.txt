@@ -1,0 +1,15 @@
+# Extra packages for fine-tuning. Only needed on the GPU machine (NVIDIA, e.g. RTX 4060 laptop).
+# See training/README.md. Recommended: Linux or WSL2 (Ubuntu) on Windows.
+#
+# 1. Install PyTorch with CUDA first (pick the command for your CUDA version at https://pytorch.org):
+#      pip install torch --index-url https://download.pytorch.org/whl/cu124
+# 2. Then:
+#      pip install -r requirements.txt -r requirements-train.txt
+
+unsloth
+trl
+peft
+datasets
+transformers
+accelerate
+bitsandbytes

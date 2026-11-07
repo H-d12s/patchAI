@@ -1,0 +1,16 @@
+{
+  "id": "cwe22_path_write_3",
+  "cwe": "CWE-22",
+  "family": "path_write",
+  "source": "generated",
+  "split": "test",
+  "project": "eval/cases/cwe22_path_write_3/project",
+  "file": "records_mod.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "def save_export(filename, content):\n    \"\"\"Write a file into the output folder and return its path.\"\"\"\n    base = os.path.realpath(EXPORT_DIR)\n    path = os.path.realpath(os.path.join(base, filename))\n    if os.path.commonpath([base, path]) != base:\n        raise ValueError(\"Invalid file name\")\n    with open(path, \"w\", encoding=\"utf-8\") as f:\n        f.write(content)\n    return path\n",
+    "imports_to_add": [],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}

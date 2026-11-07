@@ -1,0 +1,18 @@
+{
+  "id": "cwe79_xss_make_response_3",
+  "cwe": "CWE-79",
+  "family": "xss_make_response",
+  "source": "generated",
+  "split": "test",
+  "project": "eval/cases/cwe79_xss_make_response_3/project",
+  "file": "helpers_utils.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "@app.route(\"/user\")\ndef missing_user():\n    handle = request.args.get(\"handle\", \"unknown\")\n    return make_response(\"<h2>Nothing found for \" + escape(handle) + \"</h2>\", 404)\n",
+    "imports_to_add": [
+      "from markupsafe import escape"
+    ],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}

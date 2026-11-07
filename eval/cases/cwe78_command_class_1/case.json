@@ -1,0 +1,16 @@
+{
+  "id": "cwe78_command_class_1",
+  "cwe": "CWE-78",
+  "family": "command_class",
+  "source": "generated",
+  "split": "test",
+  "project": "eval/cases/cwe78_command_class_1/project",
+  "file": "helpers_mod.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "def to_pdf(self, document):\n    command = [\"libreoffice\", \"--headless\", \"--convert-to\", \"pdf\", document]\n    return subprocess.call(command, cwd=self.workdir)\n",
+    "imports_to_add": [],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}

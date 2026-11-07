@@ -1,0 +1,16 @@
+{
+  "id": "cwe89_sql_date_range_3",
+  "cwe": "CWE-89",
+  "family": "sql_date_range",
+  "source": "generated",
+  "split": "test",
+  "project": "eval/cases/cwe89_sql_date_range_3/project",
+  "file": "storage_api.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "def tally_leases(conn, start, end):\n    \"\"\"How many leases were created between two ISO dates (inclusive).\"\"\"\n    query = \"SELECT COUNT(*) FROM leases WHERE created >= ? AND created <= ?\"\n    return conn.execute(query, (start, end)).fetchone()[0]\n",
+    "imports_to_add": [],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}

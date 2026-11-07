@@ -1,0 +1,18 @@
+{
+  "id": "cwe798_secret_compare_0",
+  "cwe": "CWE-798",
+  "family": "secret_compare",
+  "source": "generated",
+  "split": "dev",
+  "project": "eval/cases/cwe798_secret_compare_0/project",
+  "file": "tasks_utils.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "def is_admin(token):\n    \"\"\"True if the request carries the right credential.\"\"\"\n    expected = os.environ.get(\"ADMIN_TOKEN\", \"\")\n    return bool(expected) and hmac.compare_digest(token, expected)\n",
+    "imports_to_add": [
+      "import os"
+    ],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "cwe79_xss_percent_3",
+  "cwe": "CWE-79",
+  "family": "xss_percent",
+  "source": "generated",
+  "split": "test",
+  "project": "eval/cases/cwe79_xss_percent_3/project",
+  "file": "tasks_app.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "@app.route(\"/lookup\")\ndef lookup_page():\n    term = request.args.get(\"term\", \"\")\n    return \"<p>You searched for: %s</p>\" % escape(term)\n",
+    "imports_to_add": [
+      "from markupsafe import escape"
+    ],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}

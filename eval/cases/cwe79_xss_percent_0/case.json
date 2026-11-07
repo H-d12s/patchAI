@@ -1,0 +1,18 @@
+{
+  "id": "cwe79_xss_percent_0",
+  "cwe": "CWE-79",
+  "family": "xss_percent",
+  "source": "generated",
+  "split": "dev",
+  "project": "eval/cases/cwe79_xss_percent_0/project",
+  "file": "backend_utils.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "@app.route(\"/filter\")\ndef filter_page():\n    tag = request.args.get(\"tag\", \"\")\n    return \"<p>Showing items tagged: %s</p>\" % escape(tag)\n",
+    "imports_to_add": [
+      "from markupsafe import escape"
+    ],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}

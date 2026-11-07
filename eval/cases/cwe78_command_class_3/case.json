@@ -1,0 +1,16 @@
+{
+  "id": "cwe78_command_class_3",
+  "cwe": "CWE-78",
+  "family": "command_class",
+  "source": "generated",
+  "split": "test",
+  "project": "eval/cases/cwe78_command_class_3/project",
+  "file": "records_app.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "def scan_file(self, upload):\n    command = [\"clamscan\", \"--no-summary\", upload]\n    return subprocess.call(command, cwd=self.workdir)\n",
+    "imports_to_add": [],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}

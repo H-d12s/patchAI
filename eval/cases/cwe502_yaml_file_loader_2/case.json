@@ -1,0 +1,16 @@
+{
+  "id": "cwe502_yaml_file_loader_2",
+  "cwe": "CWE-502",
+  "family": "yaml_file_loader",
+  "source": "generated",
+  "split": "test",
+  "project": "eval/cases/cwe502_yaml_file_loader_2/project",
+  "file": "core_utils.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "def load(self):\n    with open(self.path, encoding=\"utf-8\") as f:\n        return yaml.safe_load(f)\n",
+    "imports_to_add": [],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}

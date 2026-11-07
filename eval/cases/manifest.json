@@ -1,0 +1,1001 @@
+[
+  {
+    "id": "cwe89_sql_repository_0",
+    "cwe": "CWE-89",
+    "family": "sql_repository",
+    "source": "generated",
+    "split": "dev",
+    "project": "eval/cases/cwe89_sql_repository_0/project",
+    "file": "webapp_api.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def by_grade(self, grade):\n    rows = self.conn.execute(\n        \"SELECT id, grade FROM clinics WHERE grade = ? ORDER BY id\", (grade,)\n    ).fetchall()\n    return [tuple(row) for row in rows]\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe89_sql_repository_1",
+    "cwe": "CWE-89",
+    "family": "sql_repository",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe89_sql_repository_1/project",
+    "file": "tasks_app.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def by_grade(self, grade):\n    rows = self.conn.execute(\n        \"SELECT id, grade FROM vendors WHERE grade = ? ORDER BY id\", (grade,)\n    ).fetchall()\n    return [tuple(row) for row in rows]\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe89_sql_repository_2",
+    "cwe": "CWE-89",
+    "family": "sql_repository",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe89_sql_repository_2/project",
+    "file": "backend_lib.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def by_label(self, label):\n    rows = self.conn.execute(\n        \"SELECT id, label FROM donors WHERE label = ? ORDER BY id\", (label,)\n    ).fetchall()\n    return [tuple(row) for row in rows]\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe89_sql_repository_3",
+    "cwe": "CWE-89",
+    "family": "sql_repository",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe89_sql_repository_3/project",
+    "file": "records_mod.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def by_region(self, region):\n    rows = self.conn.execute(\n        \"SELECT id, region FROM assets WHERE region = ? ORDER BY id\", (region,)\n    ).fetchall()\n    return [tuple(row) for row in rows]\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe89_sql_date_range_0",
+    "cwe": "CWE-89",
+    "family": "sql_date_range",
+    "source": "generated",
+    "split": "dev",
+    "project": "eval/cases/cwe89_sql_date_range_0/project",
+    "file": "service_app.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def donors_in_period(conn, start, end):\n    \"\"\"How many donors were created between two ISO dates (inclusive).\"\"\"\n    query = \"SELECT COUNT(*) FROM donors WHERE created >= ? AND created <= ?\"\n    return conn.execute(query, (start, end)).fetchone()[0]\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe89_sql_date_range_1",
+    "cwe": "CWE-89",
+    "family": "sql_date_range",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe89_sql_date_range_1/project",
+    "file": "webapp_mod.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def vendors_in_period(conn, start, end):\n    \"\"\"How many vendors were created between two ISO dates (inclusive).\"\"\"\n    query = \"SELECT COUNT(*) FROM vendors WHERE created >= ? AND created <= ?\"\n    return conn.execute(query, (start, end)).fetchone()[0]\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe89_sql_date_range_2",
+    "cwe": "CWE-89",
+    "family": "sql_date_range",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe89_sql_date_range_2/project",
+    "file": "core_utils.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def count_vendors_between(conn, start, end):\n    \"\"\"How many vendors were created between two ISO dates (inclusive).\"\"\"\n    query = \"SELECT COUNT(*) FROM vendors WHERE created >= ? AND created <= ?\"\n    return conn.execute(query, (start, end)).fetchone()[0]\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe89_sql_date_range_3",
+    "cwe": "CWE-89",
+    "family": "sql_date_range",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe89_sql_date_range_3/project",
+    "file": "storage_api.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def tally_leases(conn, start, end):\n    \"\"\"How many leases were created between two ISO dates (inclusive).\"\"\"\n    query = \"SELECT COUNT(*) FROM leases WHERE created >= ? AND created <= ?\"\n    return conn.execute(query, (start, end)).fetchone()[0]\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe78_command_class_0",
+    "cwe": "CWE-78",
+    "family": "command_class",
+    "source": "generated",
+    "split": "dev",
+    "project": "eval/cases/cwe78_command_class_0/project",
+    "file": "core_api.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def make_thumbnail(self, image):\n    command = [\"convert\", \"-thumbnail\", \"64x64\", image, \"thumb.png\"]\n    return subprocess.call(command, cwd=self.workdir)\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe78_command_class_1",
+    "cwe": "CWE-78",
+    "family": "command_class",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe78_command_class_1/project",
+    "file": "helpers_mod.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def to_pdf(self, document):\n    command = [\"libreoffice\", \"--headless\", \"--convert-to\", \"pdf\", document]\n    return subprocess.call(command, cwd=self.workdir)\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe78_command_class_2",
+    "cwe": "CWE-78",
+    "family": "command_class",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe78_command_class_2/project",
+    "file": "storage_mod.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def scan_file(self, upload):\n    command = [\"clamscan\", \"--no-summary\", upload]\n    return subprocess.call(command, cwd=self.workdir)\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe78_command_class_3",
+    "cwe": "CWE-78",
+    "family": "command_class",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe78_command_class_3/project",
+    "file": "records_app.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def scan_file(self, upload):\n    command = [\"clamscan\", \"--no-summary\", upload]\n    return subprocess.call(command, cwd=self.workdir)\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe78_command_concat_0",
+    "cwe": "CWE-78",
+    "family": "command_concat",
+    "source": "generated",
+    "split": "dev",
+    "project": "eval/cases/cwe78_command_concat_0/project",
+    "file": "storage_utils.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def rename_file(old_name, new_name):\n    \"\"\"Rename a file.\"\"\"\n    result = subprocess.run([\"mv\", old_name, new_name])\n    return result.returncode == 0\n",
+      "imports_to_add": [
+        "import subprocess"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe78_command_concat_1",
+    "cwe": "CWE-78",
+    "family": "command_concat",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe78_command_concat_1/project",
+    "file": "records_app.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def rename_file(old_name, new_name):\n    \"\"\"Rename a file.\"\"\"\n    result = subprocess.run([\"mv\", old_name, new_name])\n    return result.returncode == 0\n",
+      "imports_to_add": [
+        "import subprocess"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe78_command_concat_2",
+    "cwe": "CWE-78",
+    "family": "command_concat",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe78_command_concat_2/project",
+    "file": "webapp_lib.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def rename_file(old_name, new_name):\n    \"\"\"Rename a file.\"\"\"\n    result = subprocess.run([\"mv\", old_name, new_name])\n    return result.returncode == 0\n",
+      "imports_to_add": [
+        "import subprocess"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe78_command_concat_3",
+    "cwe": "CWE-78",
+    "family": "command_concat",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe78_command_concat_3/project",
+    "file": "handlers_app.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def rename_file(old_name, new_name):\n    \"\"\"Rename a file.\"\"\"\n    result = subprocess.run([\"mv\", old_name, new_name])\n    return result.returncode == 0\n",
+      "imports_to_add": [
+        "import subprocess"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe22_path_fstring_0",
+    "cwe": "CWE-22",
+    "family": "path_fstring",
+    "source": "generated",
+    "split": "dev",
+    "project": "eval/cases/cwe22_path_fstring_0/project",
+    "file": "service_mod.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def get_snippet(snippet_name):\n    \"\"\"Return a stored snippet.\"\"\"\n    base = os.path.realpath(SNIPPETS_DIR)\n    path = os.path.realpath(os.path.join(base, snippet_name))\n    if os.path.commonpath([base, path]) != base:\n        raise ValueError(\"Invalid name\")\n    with open(path, encoding=\"utf-8\") as f:\n        return f.read()\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe22_path_fstring_1",
+    "cwe": "CWE-22",
+    "family": "path_fstring",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe22_path_fstring_1/project",
+    "file": "records_lib.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def get_snippet(snippet_name):\n    \"\"\"Return a stored snippet.\"\"\"\n    base = os.path.realpath(SNIPPETS_DIR)\n    path = os.path.realpath(os.path.join(base, snippet_name))\n    if os.path.commonpath([base, path]) != base:\n        raise ValueError(\"Invalid name\")\n    with open(path, encoding=\"utf-8\") as f:\n        return f.read()\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe22_path_fstring_2",
+    "cwe": "CWE-22",
+    "family": "path_fstring",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe22_path_fstring_2/project",
+    "file": "helpers_mod.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def get_snippet(snippet_name):\n    \"\"\"Return a stored snippet.\"\"\"\n    base = os.path.realpath(SNIPPETS_DIR)\n    path = os.path.realpath(os.path.join(base, snippet_name))\n    if os.path.commonpath([base, path]) != base:\n        raise ValueError(\"Invalid name\")\n    with open(path, encoding=\"utf-8\") as f:\n        return f.read()\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe22_path_fstring_3",
+    "cwe": "CWE-22",
+    "family": "path_fstring",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe22_path_fstring_3/project",
+    "file": "helpers_mod.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def get_snippet(snippet_name):\n    \"\"\"Return a stored snippet.\"\"\"\n    base = os.path.realpath(SNIPPETS_DIR)\n    path = os.path.realpath(os.path.join(base, snippet_name))\n    if os.path.commonpath([base, path]) != base:\n        raise ValueError(\"Invalid name\")\n    with open(path, encoding=\"utf-8\") as f:\n        return f.read()\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe22_path_write_0",
+    "cwe": "CWE-22",
+    "family": "path_write",
+    "source": "generated",
+    "split": "dev",
+    "project": "eval/cases/cwe22_path_write_0/project",
+    "file": "handlers_app.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def write_report(report_name, content):\n    \"\"\"Write a file into the output folder and return its path.\"\"\"\n    base = os.path.realpath(REPORTS_DIR)\n    path = os.path.realpath(os.path.join(base, report_name))\n    if os.path.commonpath([base, path]) != base:\n        raise ValueError(\"Invalid file name\")\n    with open(path, \"w\", encoding=\"utf-8\") as f:\n        f.write(content)\n    return path\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe22_path_write_1",
+    "cwe": "CWE-22",
+    "family": "path_write",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe22_path_write_1/project",
+    "file": "service_lib.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def save_export(filename, content):\n    \"\"\"Write a file into the output folder and return its path.\"\"\"\n    base = os.path.realpath(EXPORT_DIR)\n    path = os.path.realpath(os.path.join(base, filename))\n    if os.path.commonpath([base, path]) != base:\n        raise ValueError(\"Invalid file name\")\n    with open(path, \"w\", encoding=\"utf-8\") as f:\n        f.write(content)\n    return path\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe22_path_write_2",
+    "cwe": "CWE-22",
+    "family": "path_write",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe22_path_write_2/project",
+    "file": "storage_lib.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def write_report(report_name, content):\n    \"\"\"Write a file into the output folder and return its path.\"\"\"\n    base = os.path.realpath(REPORTS_DIR)\n    path = os.path.realpath(os.path.join(base, report_name))\n    if os.path.commonpath([base, path]) != base:\n        raise ValueError(\"Invalid file name\")\n    with open(path, \"w\", encoding=\"utf-8\") as f:\n        f.write(content)\n    return path\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe22_path_write_3",
+    "cwe": "CWE-22",
+    "family": "path_write",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe22_path_write_3/project",
+    "file": "records_mod.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def save_export(filename, content):\n    \"\"\"Write a file into the output folder and return its path.\"\"\"\n    base = os.path.realpath(EXPORT_DIR)\n    path = os.path.realpath(os.path.join(base, filename))\n    if os.path.commonpath([base, path]) != base:\n        raise ValueError(\"Invalid file name\")\n    with open(path, \"w\", encoding=\"utf-8\") as f:\n        f.write(content)\n    return path\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe79_xss_percent_0",
+    "cwe": "CWE-79",
+    "family": "xss_percent",
+    "source": "generated",
+    "split": "dev",
+    "project": "eval/cases/cwe79_xss_percent_0/project",
+    "file": "backend_utils.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "@app.route(\"/filter\")\ndef filter_page():\n    tag = request.args.get(\"tag\", \"\")\n    return \"<p>Showing items tagged: %s</p>\" % escape(tag)\n",
+      "imports_to_add": [
+        "from markupsafe import escape"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe79_xss_percent_1",
+    "cwe": "CWE-79",
+    "family": "xss_percent",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe79_xss_percent_1/project",
+    "file": "handlers_mod.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "@app.route(\"/lookup\")\ndef lookup_page():\n    term = request.args.get(\"term\", \"\")\n    return \"<p>You searched for: %s</p>\" % escape(term)\n",
+      "imports_to_add": [
+        "from markupsafe import escape"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe79_xss_percent_2",
+    "cwe": "CWE-79",
+    "family": "xss_percent",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe79_xss_percent_2/project",
+    "file": "storage_mod.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "@app.route(\"/lookup\")\ndef lookup_page():\n    term = request.args.get(\"term\", \"\")\n    return \"<p>You searched for: %s</p>\" % escape(term)\n",
+      "imports_to_add": [
+        "from markupsafe import escape"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe79_xss_percent_3",
+    "cwe": "CWE-79",
+    "family": "xss_percent",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe79_xss_percent_3/project",
+    "file": "tasks_app.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "@app.route(\"/lookup\")\ndef lookup_page():\n    term = request.args.get(\"term\", \"\")\n    return \"<p>You searched for: %s</p>\" % escape(term)\n",
+      "imports_to_add": [
+        "from markupsafe import escape"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe79_xss_make_response_0",
+    "cwe": "CWE-79",
+    "family": "xss_make_response",
+    "source": "generated",
+    "split": "dev",
+    "project": "eval/cases/cwe79_xss_make_response_0/project",
+    "file": "backend_app.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "@app.route(\"/catalog\")\ndef missing_catalog():\n    item = request.args.get(\"item\", \"unknown\")\n    return make_response(\"<h2>Nothing found for \" + escape(item) + \"</h2>\", 404)\n",
+      "imports_to_add": [
+        "from markupsafe import escape"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe79_xss_make_response_1",
+    "cwe": "CWE-79",
+    "family": "xss_make_response",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe79_xss_make_response_1/project",
+    "file": "tasks_utils.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "@app.route(\"/catalog\")\ndef missing_catalog():\n    item = request.args.get(\"item\", \"unknown\")\n    return make_response(\"<h2>Nothing found for \" + escape(item) + \"</h2>\", 404)\n",
+      "imports_to_add": [
+        "from markupsafe import escape"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe79_xss_make_response_2",
+    "cwe": "CWE-79",
+    "family": "xss_make_response",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe79_xss_make_response_2/project",
+    "file": "storage_utils.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "@app.route(\"/wiki\")\ndef missing_wiki():\n    article = request.args.get(\"article\", \"unknown\")\n    return make_response(\"<h2>Nothing found for \" + escape(article) + \"</h2>\", 404)\n",
+      "imports_to_add": [
+        "from markupsafe import escape"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe79_xss_make_response_3",
+    "cwe": "CWE-79",
+    "family": "xss_make_response",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe79_xss_make_response_3/project",
+    "file": "helpers_utils.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "@app.route(\"/user\")\ndef missing_user():\n    handle = request.args.get(\"handle\", \"unknown\")\n    return make_response(\"<h2>Nothing found for \" + escape(handle) + \"</h2>\", 404)\n",
+      "imports_to_add": [
+        "from markupsafe import escape"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe798_secret_class_attribute_0",
+    "cwe": "CWE-798",
+    "family": "secret_class_attribute",
+    "source": "generated",
+    "split": "dev",
+    "project": "eval/cases/cwe798_secret_class_attribute_0/project",
+    "file": "service_mod.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "class MailConfig:\n    \"\"\"Settings for the mail integration.\"\"\"\n\n    BASE_URL = \"https://mail.example.com/api\"\n    TIMEOUT = 10\n    SMTP_PASSWORD = os.environ.get(\"SMTP_PASSWORD\", \"\")\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe798_secret_class_attribute_1",
+    "cwe": "CWE-798",
+    "family": "secret_class_attribute",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe798_secret_class_attribute_1/project",
+    "file": "storage_lib.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "class CrmConfig:\n    \"\"\"Settings for the crm integration.\"\"\"\n\n    BASE_URL = \"https://crm.example.com/api\"\n    TIMEOUT = 10\n    CLIENT_SECRET = os.environ.get(\"CLIENT_SECRET\", \"\")\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe798_secret_class_attribute_2",
+    "cwe": "CWE-798",
+    "family": "secret_class_attribute",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe798_secret_class_attribute_2/project",
+    "file": "service_lib.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "class MailConfig:\n    \"\"\"Settings for the mail integration.\"\"\"\n\n    BASE_URL = \"https://mail.example.com/api\"\n    TIMEOUT = 10\n    SMTP_PASSWORD = os.environ.get(\"SMTP_PASSWORD\", \"\")\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe798_secret_class_attribute_3",
+    "cwe": "CWE-798",
+    "family": "secret_class_attribute",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe798_secret_class_attribute_3/project",
+    "file": "storage_utils.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "class MailConfig:\n    \"\"\"Settings for the mail integration.\"\"\"\n\n    BASE_URL = \"https://mail.example.com/api\"\n    TIMEOUT = 10\n    SMTP_PASSWORD = os.environ.get(\"SMTP_PASSWORD\", \"\")\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe798_secret_compare_0",
+    "cwe": "CWE-798",
+    "family": "secret_compare",
+    "source": "generated",
+    "split": "dev",
+    "project": "eval/cases/cwe798_secret_compare_0/project",
+    "file": "tasks_utils.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def is_admin(token):\n    \"\"\"True if the request carries the right credential.\"\"\"\n    expected = os.environ.get(\"ADMIN_TOKEN\", \"\")\n    return bool(expected) and hmac.compare_digest(token, expected)\n",
+      "imports_to_add": [
+        "import os"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe798_secret_compare_1",
+    "cwe": "CWE-798",
+    "family": "secret_compare",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe798_secret_compare_1/project",
+    "file": "helpers_mod.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def can_deploy(deploy_token):\n    \"\"\"True if the request carries the right credential.\"\"\"\n    expected = os.environ.get(\"DEPLOY_TOKEN\", \"\")\n    return bool(expected) and hmac.compare_digest(deploy_token, expected)\n",
+      "imports_to_add": [
+        "import os"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe798_secret_compare_2",
+    "cwe": "CWE-798",
+    "family": "secret_compare",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe798_secret_compare_2/project",
+    "file": "storage_mod.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def is_operator(password):\n    \"\"\"True if the request carries the right credential.\"\"\"\n    expected = os.environ.get(\"OPERATOR_PASSWORD\", \"\")\n    return bool(expected) and hmac.compare_digest(password, expected)\n",
+      "imports_to_add": [
+        "import os"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe798_secret_compare_3",
+    "cwe": "CWE-798",
+    "family": "secret_compare",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe798_secret_compare_3/project",
+    "file": "helpers_mod.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def check_api_key(api_token):\n    \"\"\"True if the request carries the right credential.\"\"\"\n    expected = os.environ.get(\"API_TOKEN\", \"\")\n    return bool(expected) and hmac.compare_digest(api_token, expected)\n",
+      "imports_to_add": [
+        "import os"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe327_crypto_signature_0",
+    "cwe": "CWE-327",
+    "family": "crypto_signature",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe327_crypto_signature_0/project",
+    "file": "service_app.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def message_tag(message, key):\n    \"\"\"Signature sent with each message so the receiver can check it was not changed.\"\"\"\n    return hmac.new(key.encode(), message.encode(), hashlib.sha256).hexdigest()\n",
+      "imports_to_add": [
+        "import hmac"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe327_crypto_signature_1",
+    "cwe": "CWE-327",
+    "family": "crypto_signature",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe327_crypto_signature_1/project",
+    "file": "helpers_utils.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def sign_request(body, key):\n    \"\"\"Signature sent with each request so the receiver can check it was not changed.\"\"\"\n    return hmac.new(key.encode(), body.encode(), hashlib.sha256).hexdigest()\n",
+      "imports_to_add": [
+        "import hmac"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe327_crypto_signature_2",
+    "cwe": "CWE-327",
+    "family": "crypto_signature",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe327_crypto_signature_2/project",
+    "file": "tasks_mod.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def sign_request(body, key):\n    \"\"\"Signature sent with each request so the receiver can check it was not changed.\"\"\"\n    return hmac.new(key.encode(), body.encode(), hashlib.sha256).hexdigest()\n",
+      "imports_to_add": [
+        "import hmac"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe327_crypto_signature_3",
+    "cwe": "CWE-327",
+    "family": "crypto_signature",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe327_crypto_signature_3/project",
+    "file": "backend_utils.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def message_tag(message, key):\n    \"\"\"Signature sent with each message so the receiver can check it was not changed.\"\"\"\n    return hmac.new(key.encode(), message.encode(), hashlib.sha256).hexdigest()\n",
+      "imports_to_add": [
+        "import hmac"
+      ],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe327_crypto_derive_key_0",
+    "cwe": "CWE-327",
+    "family": "crypto_derive_key",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe327_crypto_derive_key_0/project",
+    "file": "webapp_mod.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def key_from_password(password, salt):\n    \"\"\"Turn a password into an encryption key.\"\"\"\n    return hashlib.pbkdf2_hmac(\"sha256\", password.encode(), salt, 600_000)\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe327_crypto_derive_key_1",
+    "cwe": "CWE-327",
+    "family": "crypto_derive_key",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe327_crypto_derive_key_1/project",
+    "file": "core_app.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def key_from_password(password, salt):\n    \"\"\"Turn a password into an encryption key.\"\"\"\n    return hashlib.pbkdf2_hmac(\"sha256\", password.encode(), salt, 600_000)\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe327_crypto_derive_key_2",
+    "cwe": "CWE-327",
+    "family": "crypto_derive_key",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe327_crypto_derive_key_2/project",
+    "file": "records_utils.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def make_encryption_key(password, salt):\n    \"\"\"Turn a password into an encryption key.\"\"\"\n    return hashlib.pbkdf2_hmac(\"sha256\", password.encode(), salt, 600_000)\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe327_crypto_derive_key_3",
+    "cwe": "CWE-327",
+    "family": "crypto_derive_key",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe327_crypto_derive_key_3/project",
+    "file": "service_utils.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def make_encryption_key(password, salt):\n    \"\"\"Turn a password into an encryption key.\"\"\"\n    return hashlib.pbkdf2_hmac(\"sha256\", password.encode(), salt, 600_000)\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe502_yaml_settings_0",
+    "cwe": "CWE-502",
+    "family": "yaml_settings",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe502_yaml_settings_0/project",
+    "file": "webapp_lib.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def read_profile(document):\n    \"\"\"Settings from a user's YAML file, on top of the defaults.\"\"\"\n    settings = dict(DEFAULTS)\n    settings.update(yaml.safe_load(document) or {})\n    return settings\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe502_yaml_settings_1",
+    "cwe": "CWE-502",
+    "family": "yaml_settings",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe502_yaml_settings_1/project",
+    "file": "records_api.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def read_profile(document):\n    \"\"\"Settings from a user's YAML file, on top of the defaults.\"\"\"\n    settings = dict(DEFAULTS)\n    settings.update(yaml.safe_load(document) or {})\n    return settings\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe502_yaml_settings_2",
+    "cwe": "CWE-502",
+    "family": "yaml_settings",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe502_yaml_settings_2/project",
+    "file": "core_api.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def load_preferences(yaml_text):\n    \"\"\"Settings from a user's YAML file, on top of the defaults.\"\"\"\n    settings = dict(DEFAULTS)\n    settings.update(yaml.safe_load(yaml_text) or {})\n    return settings\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe502_yaml_settings_3",
+    "cwe": "CWE-502",
+    "family": "yaml_settings",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe502_yaml_settings_3/project",
+    "file": "handlers_app.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def read_profile(document):\n    \"\"\"Settings from a user's YAML file, on top of the defaults.\"\"\"\n    settings = dict(DEFAULTS)\n    settings.update(yaml.safe_load(document) or {})\n    return settings\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe502_yaml_file_loader_0",
+    "cwe": "CWE-502",
+    "family": "yaml_file_loader",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe502_yaml_file_loader_0/project",
+    "file": "service_mod.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def load(self):\n    with open(self.path, encoding=\"utf-8\") as f:\n        return yaml.safe_load(f)\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe502_yaml_file_loader_1",
+    "cwe": "CWE-502",
+    "family": "yaml_file_loader",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe502_yaml_file_loader_1/project",
+    "file": "core_mod.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def load(self):\n    with open(self.path, encoding=\"utf-8\") as f:\n        return yaml.safe_load(f)\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe502_yaml_file_loader_2",
+    "cwe": "CWE-502",
+    "family": "yaml_file_loader",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe502_yaml_file_loader_2/project",
+    "file": "core_utils.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def load(self):\n    with open(self.path, encoding=\"utf-8\") as f:\n        return yaml.safe_load(f)\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "cwe502_yaml_file_loader_3",
+    "cwe": "CWE-502",
+    "family": "yaml_file_loader",
+    "source": "generated",
+    "split": "test",
+    "project": "eval/cases/cwe502_yaml_file_loader_3/project",
+    "file": "handlers_utils.py",
+    "reference_fix": {
+      "status": "fixed",
+      "fixed_code": "def load(self):\n    with open(self.path, encoding=\"utf-8\") as f:\n        return yaml.safe_load(f)\n",
+      "imports_to_add": [],
+      "explanation": "reference fix",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "shop_cwe89",
+    "cwe": "CWE-89",
+    "family": "vuln_shop",
+    "source": "handwritten",
+    "split": "test",
+    "project": "demo_projects/vuln_shop",
+    "file": "shop/db.py"
+  },
+  {
+    "id": "shop_cwe79",
+    "cwe": "CWE-79",
+    "family": "vuln_shop",
+    "source": "handwritten",
+    "split": "test",
+    "project": "demo_projects/vuln_shop",
+    "file": "shop/views.py"
+  },
+  {
+    "id": "shop_cwe22",
+    "cwe": "CWE-22",
+    "family": "vuln_shop",
+    "source": "handwritten",
+    "split": "test",
+    "project": "demo_projects/vuln_shop",
+    "file": "shop/invoices.py"
+  },
+  {
+    "id": "shop_cwe78",
+    "cwe": "CWE-78",
+    "family": "vuln_shop",
+    "source": "handwritten",
+    "split": "test",
+    "project": "demo_projects/vuln_shop",
+    "file": "shop/suppliers.py"
+  },
+  {
+    "id": "shop_cwe798",
+    "cwe": "CWE-798",
+    "family": "vuln_shop",
+    "source": "handwritten",
+    "split": "test",
+    "project": "demo_projects/vuln_shop",
+    "file": "shop/config.py"
+  },
+  {
+    "id": "shop_cwe327",
+    "cwe": "CWE-327",
+    "family": "vuln_shop",
+    "source": "handwritten",
+    "split": "test",
+    "project": "demo_projects/vuln_shop",
+    "file": "shop/accounts.py"
+  },
+  {
+    "id": "shop_cwe502",
+    "cwe": "CWE-502",
+    "family": "vuln_shop",
+    "source": "handwritten",
+    "split": "test",
+    "project": "demo_projects/vuln_shop",
+    "file": "shop/catalog.py"
+  }
+]

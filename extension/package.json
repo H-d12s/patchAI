@@ -1,0 +1,96 @@
+{
+  "name": "patchai",
+  "displayName": "PatchAI – AI Security Fixes",
+  "description": "Finds security vulnerabilities in Python code and fixes them with the PatchAI model, with checks and human approval.",
+  "publisher": "patchai-team",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Linters",
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onLanguage:python"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "patchai.scan",
+        "title": "Scan Workspace for Vulnerabilities",
+        "category": "PatchAI"
+      },
+      {
+        "command": "patchai.fix",
+        "title": "Fix with AI",
+        "category": "PatchAI"
+      },
+      {
+        "command": "patchai.startServer",
+        "title": "Start PatchAI Server",
+        "category": "PatchAI"
+      },
+      {
+        "command": "patchai.selectModel",
+        "title": "Select Model",
+        "category": "PatchAI"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "patchai.fix",
+          "when": "editorLangId == python"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "patchai.fix",
+          "when": "editorLangId == python",
+          "group": "patchai"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "PatchAI",
+      "properties": {
+        "patchai.serverUrl": {
+          "type": "string",
+          "default": "http://127.0.0.1:8765",
+          "description": "Base URL of the local PatchAI server."
+        },
+        "patchai.model": {
+          "type": "string",
+          "default": "",
+          "description": "Model used to write fixes. Leave empty to use the server's default model. Use 'PatchAI: Select Model' to pick one."
+        },
+        "patchai.pythonPath": {
+          "type": "string",
+          "default": "",
+          "description": "Python interpreter used by 'PatchAI: Start PatchAI Server'. Leave empty to use the repository's .venv (or 'python' if there is none). A relative path (for example .venv/Scripts/python.exe) is resolved against the server folder."
+        },
+        "patchai.serverDir": {
+          "type": "string",
+          "default": "",
+          "description": "Folder the server is started in (the PatchAI repository root). Leave empty to use the folder that contains this extension."
+        },
+        "patchai.scanOnSave": {
+          "type": "boolean",
+          "default": false,
+          "description": "Scan the workspace again after a Python file is saved."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "20.x",
+    "@types/vscode": "~1.85.0",
+    "typescript": "^5.9.3"
+  }
+}

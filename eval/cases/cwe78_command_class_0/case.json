@@ -1,0 +1,16 @@
+{
+  "id": "cwe78_command_class_0",
+  "cwe": "CWE-78",
+  "family": "command_class",
+  "source": "generated",
+  "split": "dev",
+  "project": "eval/cases/cwe78_command_class_0/project",
+  "file": "core_api.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "def make_thumbnail(self, image):\n    command = [\"convert\", \"-thumbnail\", \"64x64\", image, \"thumb.png\"]\n    return subprocess.call(command, cwd=self.workdir)\n",
+    "imports_to_add": [],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}

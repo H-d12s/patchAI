@@ -1,0 +1,16 @@
+{
+  "id": "cwe22_path_fstring_2",
+  "cwe": "CWE-22",
+  "family": "path_fstring",
+  "source": "generated",
+  "split": "test",
+  "project": "eval/cases/cwe22_path_fstring_2/project",
+  "file": "helpers_mod.py",
+  "reference_fix": {
+    "status": "fixed",
+    "fixed_code": "def get_snippet(snippet_name):\n    \"\"\"Return a stored snippet.\"\"\"\n    base = os.path.realpath(SNIPPETS_DIR)\n    path = os.path.realpath(os.path.join(base, snippet_name))\n    if os.path.commonpath([base, path]) != base:\n        raise ValueError(\"Invalid name\")\n    with open(path, encoding=\"utf-8\") as f:\n        return f.read()\n",
+    "imports_to_add": [],
+    "explanation": "reference fix",
+    "confidence": 1.0
+  }
+}
